@@ -1,0 +1,42 @@
+.block2 {
+  background-color: blue;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -5px;
+}
+
+.block2__child {
+  position: relative;
+  flex: 1 0 calc(33% - 10px);
+  margin: 0px 5px 10px 5px;
+}
+
+@media (min-width: 1025px) {
+  .block2__child {
+    background-color: red;
+  }
+}
+
+@media (max-width: 1024px) {
+  .block2__child {
+    background-color: yellow;
+  }
+  .block2__child:nth-child(1) {
+    order: 3;
+  }
+  .block2__child:nth-child(2) {
+    order: 1;
+  }
+  .block2__child:nth-child(3) {
+    order: 2;
+  }
+  .block2__child:nth-child(4) {
+    order: 6;
+  }
+  .block2__child:nth-child(5) {
+    order: 4;
+  }
+  .block2__child:nth-child(6) {
+    order: 5;
+  }
+}

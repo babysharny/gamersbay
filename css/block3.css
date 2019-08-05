@@ -1,0 +1,13 @@
+.block3 {
+  background-color: yellow;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.block3__child {
+  position: relative;
+  flex: 1;
+  padding: 10px 0;
+  border: 1px solid black;
+  text-align: center;
+}

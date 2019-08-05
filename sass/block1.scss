@@ -1,0 +1,182 @@
+$circle-radius: 10px;
+$circle-width: 2px;
+
+$item-padding-x: 30px;
+$item-padding-y: 20px;
+
+$snake-radius: 20px;
+$snake-width: 2px;
+
+$index-margin: 10px;
+
+.block1 {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  padding: 10px 0;
+
+  &__child {
+    position: relative;
+    padding: $item-padding-y $item-padding-x;
+    text-align: center;
+    border: $snake-width solid red;
+    
+    // index
+    span:before {
+      content: attr(data-num);
+      position: absolute;
+      font-weight: bold;
+      font-size: 30px;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    // circle
+    &:after {
+      content: "";
+      position: absolute;
+      width: $circle-radius * 2;
+      height: $circle-radius * 2;
+      border-radius: $snake-radius;
+      right: #{$circle-radius * (-1)};
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #fff;
+      border: $circle-width solid green;
+    }
+
+    @media (min-width: 1025px) {
+      margin-top: $snake-width * (-1);
+
+      &:nth-child(odd) {
+        margin-right: #{$snake-radius + $snake-width};
+        padding-right: #{$item-padding-x - $snake-radius};
+
+        border-right: none;
+        border-bottom-left-radius: #{$snake-radius};
+        border-top-left-radius: #{$snake-radius};
+
+        // index
+        span:before {
+          right: calc(100% + #{$circle-radius + $index-margin});
+        }
+
+        // circle
+        &:after {
+          right: calc(100% - #{$circle-radius + ($circle-width / 2)});
+        }
+      }
+
+      &:nth-child(even) {
+        margin-left: #{$snake-radius + $snake-width};
+        padding-left: #{$item-padding-x - $snake-radius};
+
+        border-left: none;
+        border-bottom-right-radius: #{$snake-radius};
+        border-top-right-radius: #{$snake-radius};
+
+        // index
+        span:before {
+          left: calc(100% + #{$circle-radius + $index-margin});
+        }
+        // circle
+        &:after {
+          left: calc(100% - #{$circle-radius + ($circle-width / 2)});
+        }
+      }
+
+      &:first-of-type {
+        border-top: none;
+        border-right: none;
+
+        // tail
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0px;
+          left: #{$snake-width * (-1)};
+          width: $snake-radius;
+          height: 50%;
+          background-color: #fff;
+        }
+      }
+
+      &:last-of-type {
+        border-bottom: none;
+
+        // tail
+        &:before {
+          content: "";
+          position: absolute;
+          width: $snake-radius;
+          height: 50%;
+          background-color: #fff;
+        }
+
+        &:nth-child(odd) {
+          border-right: none;
+          &:before {
+            bottom: 0px;
+            left: #{$snake-width * (-1)};
+
+          }
+        }
+
+        &:nth-child(even) {
+          border-left: none;
+          &:before {
+            bottom: 0px;
+            right: #{$snake-width * (-1)};
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+
+        border-right: none;
+        border-top: none;
+        border-bottom: none;
+
+        // index
+        span:before {
+          right: calc(100% + #{$circle-radius + $index-margin});
+        }
+
+        // circle
+        &:after {
+          right: calc(100% - #{$circle-radius + ($circle-width / 2)});
+        }
+
+
+      &:first-of-type {
+        
+        // tail
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0px;
+          left: #{$snake-width * (-1)};
+          width: $snake-radius;
+          height: 50%;
+          background-color: #fff;
+        }
+      }
+
+      &:last-of-type {
+
+        // tail
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: 0px;
+          left: #{$snake-width * (-1)};
+          width: $snake-radius;
+          height: 50%;
+          background-color: #fff;
+        }
+      }
+    }
+  }
+}

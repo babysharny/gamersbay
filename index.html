@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Для мобильных устройств -->
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Test Author Simon</title>
+    <!-- Это понадобиться чуть позже -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    
+    <!-- можно пользоваться препроцессорами -->
+    <!-- супер! так и поступим =) -->
+    <link rel="stylesheet" href="/css/block1.css">
+    <link rel="stylesheet" href="/css/block2.css">
+    <link rel="stylesheet" href="/css/block3.css">
+  </head>
+  <body>
+    Для запуска:
+    <pre>
+      npm i
+      npm start
+    </pre>
+    <br />
+
+    1. Сверстать адаптивно, ожидаемый результат, желательно без картинок:
+    - Desktop http://take.ms/nnDQL http://take.ms/Cwagn
+    - Tablet http://take.ms/UlXFB
+    <div class="block1">
+      <div class="block1__child">
+        <span data-num="1"
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+          accusantium dicta dolor dolorum in laboriosam mollitia?</span
+        >
+      </div>
+      <div class="block1__child">
+        <span data-num="2"
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+          accusantium dicta dolor dolorum in laboriosam mollitia?</span
+        >
+      </div>
+      <div class="block1__child">
+        <span data-num="3"
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+          accusantium dicta dolor dolorum in laboriosam mollitia?</span
+        >
+      </div>
+      <div class="block1__child">
+        <span data-num="4"
+          >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
+          accusantium dicta dolor dolorum in laboriosam mollitia?</span
+        >
+      </div>
+    </div>
+    <style>
+
+    </style>
+
+    2. Сверстать адаптивно, __child обязательно должен быть position: relative,
+    ожидаемый результат:
+    - Desktop http://take.ms/eY3ba
+    - Tablet http://take.ms/9JAbZ
+    <div class="block2">
+      <div class="block2__child">
+        1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+      <div class="block2__child">
+        2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+      <div class="block2__child">
+        3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+      <div class="block2__child">
+        4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+      <div class="block2__child">
+        5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+      <div class="block2__child">
+        6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+        aperiam, architecto aspernatur aut cumque dolorum est, et excepturi
+        facilis, ipsam itaque natus nihil odio rem sed ut vel veritatis
+        voluptatum?
+      </div>
+    </div>
+    <p>
+      3. Сверстать, ожидается следующее поведение:
+      - html lang="ru" 99.99 Р
+      - html lang="en" $ 99.99
+    </p>
+    <div class="value">99.99</div>
+    <style>
+      .value:lang(ru):after {
+        content: " P";
+      }
+      .value:lang(en):before {
+        content: "$ "
+      }
+    </style>
+    <p>
+      4. Сверстать, вложеные элементы должны равномерно распределяться по все
+      ширине родителя в зависимости от кол-ва элементов.
+    </p>
+    <div class="block3">
+      <div class="block3__child">50%</div>
+      <div class="block3__child">50%</div>
+    </div>
+    <div class="block3">
+      <div class="block3__child">33.33%</div>
+      <div class="block3__child">33.33%</div>
+      <div class="block3__child">33.33%</div>
+    </div>
+    <div class="block3">
+      <div class="block3__child">25%</div>
+      <div class="block3__child">25%</div>
+      <div class="block3__child">25%</div>
+      <div class="block3__child">25%</div>
+    </div>
+    <div class="block3">
+      <div class="block3__child">20%</div>
+      <div class="block3__child">20%</div>
+      <div class="block3__child">20%</div>
+      <div class="block3__child">20%</div>
+      <div class="block3__child">20%</div>
+    </div>
+
+    <p>
+      5. Написать конструктор синглтона.
+      - `console.log` написаны проверки которые инстансы должны в итоге проходить
+      - менять порядок объявления переменных и сами условия в проверках нельзя
+    </p>
+
+    <script>
+      try {
+        const Singleton = function Singleton() {
+          if (!(this instanceof Singleton)) {
+            return new Singleton();
+          }
+          // hardcore??
+          // if (!new.target) {
+          //   return new arguments.callee();
+          // }
+
+          if (!!Singleton.instance) {
+            return Singleton.instance;
+          }
+          this.value = Math.random();
+          Singleton.instance = this;
+          return this;
+        };
+
+        const a = Singleton();
+        const b = new Singleton();
+        const c = new Singleton();
+
+        console.log(a === b, a === c, b === c); // true
+        console.log(a instanceof Singleton); // true
+        console.log(b instanceof Singleton); // true
+
+        console.log(a);
+        console.log(b);
+        console.log(c);
+
+      } catch (e) {}
+    </script>
+
+    <p>
+      6. Написать виджет для Vue.js состоящий из текстового поля, кнопки и
+      списка слов. При вводе слова и нажатии на кнопку слово должно добавляться
+      в список. При клике на слово в списке удаляться из него. Вид элементов
+      списка задается в родительском компоненте. У самого компонента должен быть
+      только один входной параметр - массив с элементами.
+    </p>
+    <div id="app">
+      <magic-list :list="items" @remove="onRemove">
+        <template #item="{ item, index}">
+          <span style="font-weight: 500">{{ index + 1 }}</span> <span>{{ item }}</span>
+        </template>
+      </magic-list>
+    </div>
+    <p>
+      P.S. Я не совсем понял что значит `виджет для Vue.js`,
+      поэтому реализовал в виде компонента. 
+      Если надо сделать какойто враппер, типа <a href="https://github.com/karol-f/vue-custom-element" target="_blank">такого</a>
+      сделаю по запросу.
+    </p>
+    <script>
+      const MagicList = {
+        template: `
+          <div>
+            <input type="text" v-model="text" @keydown.enter="add" />
+            <button @click="add">add</button>
+            <span>press enter to add</span>
+            <div
+              v-for="(item, index) in list"
+              :key="index"
+              @click="$emit('remove', index)">
+              <slot name="item" :item="item" :index="index">
+                {{ item }}
+              </slot>
+            </div>
+          </div>`,
+        props: {
+          list: {
+            type: Array,
+            default: function() { return [] }
+          }
+        },
+        data: function () {
+          return { text: '' }
+        },
+        methods: {
+          add() {
+            this.list.push(this.text)
+            this.text = ''
+          },
+        }
+      } 
+
+      new Vue({
+        el: '#app',
+        components: {
+          MagicList
+        },
+        data: function() {
+          return  {
+            items: ['one', 'two', 'six']
+          }
+        },
+        methods: {
+          onRemove(index) {
+            this.$delete(this.items, index)
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
